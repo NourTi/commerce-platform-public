@@ -82,3 +82,12 @@ pnpm dev
 ```
 
 Review [`PUBLIC_RELEASE.md`](./PUBLIC_RELEASE.md) for environment-variable requirements, database setup, release boundaries, and the included media manifest.
+
+## Credits and acknowledgments
+
+| Attribution | Role |
+|---|---|
+| [NourTi](https://github.com/NourTi) | **Product Developer & Platform Enhancer**; **UI Design & Display Presentation**. |
+| [EverShop](https://github.com/evershopcommerce/evershop) community | Upstream open-source inspiration and category reference. This acknowledgment does not imply that EverShop or its maintainers contributed to, endorsed, or collaborated on this repository. |
+
+See [`CONTRIBUTORS.md`](./CONTRIBUTORS.md) for the full attribution policy and future-contribution guidance.
