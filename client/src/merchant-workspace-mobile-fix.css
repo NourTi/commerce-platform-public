@@ -1,0 +1,4 @@
+@media (max-width:620px){
+  .merchant-rail nav{display:grid!important;grid-column:1/-1;grid-auto-flow:row!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;justify-content:stretch;width:100%}
+  .merchant-rail nav button{justify-content:flex-start;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:9px 7px;font-size:9px}
+}

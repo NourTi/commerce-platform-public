@@ -1,0 +1,60 @@
+import { useAuth } from "@/_core/hooks/useAuth";
+import ShopShell from "@/components/ShopShell";
+import { useCart } from "@/contexts/CartContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { money } from "@/lib/commerce";
+import { commerceCopy } from "@/lib/commerceCopy";
+import { trpc } from "@/lib/trpc";
+import { applySavedAddressToCheckout } from "@/lib/checkoutAddress";
+import { CheckCircle2, CreditCard, Landmark, Loader2, Truck } from "lucide-react";
+import { FormEvent, useEffect, useState } from "react";
+import { Link } from "wouter";
+import "../native-checkout.css";
+
+const nativeCopy = {
+  en: { contact: "Contact", delivery: "Delivery address", saved: "Use a saved address", chooseAddress: "Choose an address", addressesLoading: "Loading your saved addresses…", addressesUnavailable: "Saved addresses are unavailable right now. You can still enter a delivery address below.", method: "Delivery method", payment: "Payment method", first: "First name", last: "Last name", address: "Address", city: "City", region: "Wilaya / region", phone: "Phone", transfer: "Bank-transfer reference", transferHint: "Enter the reference after sending the transfer; the merchant reviews it before fulfilment.", codHint: "Pay in cash when the order is delivered. The merchant confirms the order before fulfilment.", bankHint: "Send the transfer through your bank, then provide its reference for merchant review.", review: "Your order is recorded and awaits merchant review.", noDelivery: "This store has not configured delivery yet.", configure: "Choose a delivery method first.", cod: "Pay on delivery", bank: "Bank transfer", loading: "Preparing checkout…" },
+  fr: { contact: "Contact", delivery: "Adresse de livraison", saved: "Utiliser une adresse enregistrée", chooseAddress: "Choisir une adresse", addressesLoading: "Chargement de vos adresses enregistrées…", addressesUnavailable: "Les adresses enregistrées sont momentanément indisponibles. Vous pouvez saisir une adresse de livraison ci-dessous.", method: "Livraison", payment: "Paiement", first: "Prénom", last: "Nom", address: "Adresse", city: "Ville", region: "Wilaya / région", phone: "Téléphone", transfer: "Référence du virement", transferHint: "Saisissez la référence après le virement ; le marchand valide avant la préparation.", codHint: "Payez en espèces à la livraison. Le marchand confirme la commande avant la préparation.", bankHint: "Effectuez le virement auprès de votre banque, puis fournissez sa référence pour validation par le marchand.", review: "Votre commande est enregistrée et attend la validation du marchand.", noDelivery: "Cette boutique n’a pas encore configuré la livraison.", configure: "Choisissez d’abord une méthode de livraison.", cod: "Paiement à la livraison", bank: "Virement bancaire", loading: "Préparation du paiement…" },
+  ar: { contact: "بيانات التواصل", delivery: "عنوان التسليم", saved: "استخدم عنواناً محفوظاً", chooseAddress: "اختر عنواناً", addressesLoading: "يجري تحميل عناوينك المحفوظة…", addressesUnavailable: "العناوين المحفوظة غير متاحة الآن. لا يزال بإمكانك إدخال عنوان التوصيل أدناه.", method: "طريقة التوصيل", payment: "طريقة الدفع", first: "الاسم", last: "اللقب", address: "العنوان", city: "المدينة", region: "الولاية / المنطقة", phone: "الهاتف", transfer: "مرجع التحويل البنكي", transferHint: "أدخل المرجع بعد التحويل؛ يراجعه التاجر قبل تجهيز الطلب.", codHint: "ادفع نقدًا عند تسليم الطلب. يؤكد التاجر الطلب قبل التجهيز.", bankHint: "أرسل التحويل عبر مصرفك، ثم أدخل مرجعه لمراجعة التاجر.", review: "تم تسجيل طلبك وهو بانتظار مراجعة التاجر.", noDelivery: "لم يضبط هذا المتجر خيارات التوصيل بعد.", configure: "اختر طريقة توصيل أولاً.", cod: "الدفع عند الاستلام", bank: "تحويل بنكي", loading: "يتم تجهيز الدفع…" },
+} as const;
+
+export default function CheckoutPage() {
+  const { cart, clearCart } = useCart();
+  const { user } = useAuth();
+  const { locale } = useLanguage();
+  const copy = commerceCopy[locale].checkout;
+  const local = nativeCopy[locale];
+  const cartId = cart?.id ?? "no-cart-0";
+  const setup = trpc.commerce.checkoutSetup.useQuery({ cartId }, { enabled: Boolean(cart?.id) });
+  const savedAddresses = trpc.commerce.myAddresses.useQuery(undefined, { enabled: Boolean(user) });
+  const [paymentProvider, setPaymentProvider] = useState<"CASH_ON_DELIVERY" | "BANK_TRANSFER" | "CHARGILY_PAY" | "MANUAL">("CASH_ON_DELIVERY");
+  const [deliveryRateId, setDeliveryRateId] = useState("");
+  const [complete, setComplete] = useState<{ orderNumber: string; totalCents: number; review: boolean } | null>(null);
+  const [form, setForm] = useState({ email: "", firstName: "", lastName: "", line1: "", city: "", region: "", phone: "", transferReference: "" });
+  const storefrontCheckout = trpc.commerce.storefrontCheckout.useMutation({ onSuccess: order => { clearCart(); setComplete({ orderNumber: order.orderNumber, totalCents: order.totalCents, review: order.requiresMerchantReview }); } });
+
+  useEffect(() => {
+    if (!setup.data) return;
+    if (!deliveryRateId && setup.data.deliveryRates[0]) setDeliveryRateId(setup.data.deliveryRates[0].id);
+    const firstMethod = setup.data.paymentMethods[0]?.provider;
+    if (firstMethod) setPaymentProvider(firstMethod);
+  }, [setup.data, deliveryRateId]);
+
+  if (complete) return <ShopShell><main className="checkout-page"><section className="order-complete"><CheckCircle2 /><p className="eyebrow">ORDER CREATED</p><h1>{complete.orderNumber}</h1><p>{copy.orderRecorded(money(complete.totalCents, locale))} {complete.review ? <b>{local.review}</b> : null}</p><Link href="/store" className="button-primary">{copy.returnStore}</Link></section></main></ShopShell>;
+  if (!cart?.lines.length) return <ShopShell><main className="checkout-page"><section className="catalog-empty"><h2>{copy.emptyTitle}</h2><Link href="/store" className="button-primary">{copy.startStore}</Link></section></main></ShopShell>;
+  const selectedRate = setup.data?.deliveryRates.find(rate => rate.id === deliveryRateId);
+  const methods = setup.data?.paymentMethods ?? [];
+  const canSubmit = Boolean(selectedRate && methods.some(method => method.provider === paymentProvider));
+  const setField = (key: keyof typeof form, value: string) => setForm(current => ({ ...current, [key]: value }));
+  const selectSavedAddress = (addressId: string) => {
+    const address = savedAddresses.data?.find(item => item.id === addressId);
+    if (!address) return;
+    setForm(current => ({ ...current, ...applySavedAddressToCheckout(current, address) }));
+  };
+  async function submit(event: FormEvent) {
+    event.preventDefault();
+    if (!canSubmit) return;
+    await storefrontCheckout.mutateAsync({ cartId, email: form.email, paymentProvider, deliveryRateId, locale, bankTransferReference: paymentProvider === "BANK_TRANSFER" ? form.transferReference : undefined, shippingAddress: { firstName: form.firstName, lastName: form.lastName, line1: form.line1, city: form.city, region: form.region || undefined, countryCode: "DZ", phone: form.phone } });
+  }
+  const paymentLabel = (provider: string, fallback: string) => provider === "CASH_ON_DELIVERY" ? local.cod : provider === "BANK_TRANSFER" ? local.bank : fallback;
+  return <ShopShell><main className="checkout-page"><header className="page-heading"><p className="eyebrow">{copy.eyebrow}</p><h1>{copy.heading}</h1></header>{setup.isLoading ? <section className="catalog-empty"><Loader2 className="animate-spin" /><p>{local.loading}</p></section> : !setup.data?.deliveryRates.length ? <section className="catalog-empty"><Truck /><h2>{local.noDelivery}</h2><p>{local.configure}</p><Link href="/store" className="button-primary">{copy.returnStore}</Link></section> : <form className="checkout-layout" onSubmit={submit}><div className="checkout-form"><section><h2>{local.contact}</h2><label>{copy.email}<input type="email" required value={form.email} onChange={event => setField("email", event.target.value)} /></label></section><section><h2>{local.delivery}</h2>{user && savedAddresses.isLoading ? <p className="saved-address-status"><Loader2 className="animate-spin" size={14} />{local.addressesLoading}</p> : null}{user && savedAddresses.error ? <p className="saved-address-status error" role="alert">{local.addressesUnavailable}</p> : null}{user && !savedAddresses.isLoading && !savedAddresses.error && savedAddresses.data?.length ? <label className="saved-address-select">{local.saved}<select defaultValue="" onChange={event => selectSavedAddress(event.target.value)}><option value="">{local.chooseAddress}</option>{savedAddresses.data.map(address => <option key={address.id} value={address.id}>{address.label ?? local.delivery} · {address.line1}, {address.city}</option>)}</select></label> : null}<div className="checkout-native-grid"><label>{local.first}<input required value={form.firstName} onChange={event => setField("firstName", event.target.value)} /></label><label>{local.last}<input required value={form.lastName} onChange={event => setField("lastName", event.target.value)} /></label><label className="wide-field">{local.address}<input required value={form.line1} onChange={event => setField("line1", event.target.value)} /></label><label>{local.city}<input required value={form.city} onChange={event => setField("city", event.target.value)} /></label><label>{local.region}<input value={form.region} onChange={event => setField("region", event.target.value)} /></label><label className="wide-field">{local.phone}<input required value={form.phone} onChange={event => setField("phone", event.target.value)} /></label></div></section><section><h2>{local.method}</h2>{setup.data.deliveryRates.map(rate => <label className={deliveryRateId === rate.id ? "shipping-choice active" : "shipping-choice"} key={rate.id}><input type="radio" name="delivery" checked={deliveryRateId === rate.id} onChange={() => setDeliveryRateId(rate.id)} /><span>{rate.name}<small>{rate.estimatedMinDays !== null || rate.estimatedMaxDays !== null ? `${rate.estimatedMinDays ?? "?"}–${rate.estimatedMaxDays ?? "?"} days` : ""}</small></span><b>{money(rate.amountCents, locale)}</b></label>)}</section><section><h2>{local.payment}</h2>{methods.map(method => <label className={paymentProvider === method.provider ? "shipping-choice active" : "shipping-choice"} key={method.provider}><input type="radio" name="payment" checked={paymentProvider === method.provider} onChange={() => setPaymentProvider(method.provider)} /><span>{method.provider === "BANK_TRANSFER" ? <Landmark size={15} /> : <CreditCard size={15} />}{paymentLabel(method.provider, method.label)}</span></label>)}<p className="checkout-method-note" role="status">{paymentProvider === "BANK_TRANSFER" ? local.bankHint : local.codHint}</p>{paymentProvider === "BANK_TRANSFER" ? <label>{local.transfer}<input required value={form.transferReference} onChange={event => setField("transferReference", event.target.value)} /><small>{local.transferHint}</small></label> : null}</section></div><aside className="cart-summary"><p className="eyebrow">{copy.review}</p>{cart.lines.map(line => <div className="checkout-line" key={line.id}><span>{line.title} × {line.quantity}</span><b>{money(line.unitPriceCents * line.quantity, locale)}</b></div>)}<dl><div><dt>{copy.subtotal}</dt><dd>{money(cart.totals.subtotalCents, locale)}</dd></div><div><dt>{copy.discount}</dt><dd>−{money(cart.totals.discountCents, locale)}</dd></div><div><dt>{copy.shipping}</dt><dd>{selectedRate ? money(selectedRate.amountCents, locale) : "—"}</dd></div><div className="cart-total"><dt>{copy.orderTotal}</dt><dd>{money(cart.totals.totalCents + (selectedRate?.amountCents ?? 0), locale)}</dd></div></dl><button className="button-primary wide" type="submit" disabled={storefrontCheckout.isPending || !canSubmit}>{storefrontCheckout.isPending ? copy.creating : paymentProvider === "CASH_ON_DELIVERY" ? local.cod : paymentProvider === "BANK_TRANSFER" ? local.bank : copy.createOrder}</button>{storefrontCheckout.error ? <p className="form-error">{storefrontCheckout.error.message}</p> : null}</aside></form>}</main></ShopShell>;
+}

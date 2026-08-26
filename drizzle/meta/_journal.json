@@ -1,0 +1,104 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1787531127127,
+      "tag": "0000_sweet_ben_grimm",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1787532213487,
+      "tag": "0001_closed_mad_thinker",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1787581156160,
+      "tag": "0002_cynical_chamber",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1787583013224,
+      "tag": "0003_panoramic_ted_forrester",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1787605318345,
+      "tag": "0004_bizarre_spitfire",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1787663994757,
+      "tag": "0005_bouncy_amphibian",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1787695160603,
+      "tag": "0006_free_starbolt",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1787695339688,
+      "tag": "0007_broken_vin_gonzales",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1787697339064,
+      "tag": "0008_flat_dark_beast",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1787697551643,
+      "tag": "0009_normal_gravity",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1787698388831,
+      "tag": "0010_silly_nighthawk",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1787703185496,
+      "tag": "0011_kind_odin",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "5",
+      "when": 1787703530358,
+      "tag": "0012_common_screwball",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1787704945588,
+      "tag": "0013_curious_lady_vermin",
+      "breakpoints": true
+    }
+  ]
+}

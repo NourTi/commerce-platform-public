@@ -1,0 +1,180 @@
+# Made-to-order commerce platform study
+
+- [x] Review the supplied engineering guidance and document the adopted build standards.
+- [x] Upgrade the project to a full-stack application with authenticated data storage.
+- [x] Implement Forge domain models for product blueprints, configuration versions, price traces, quotes, and production passports.
+- [x] Implement the furniture reference workflow: valid selections, live price trace, saved configuration, quote/deposit readiness, and production handoff.
+- [x] Build the developer-facing extension contract and a mock production connector.
+- [x] Validate authorization, invalid configuration rejection, price trace persistence, and production snapshot integrity.
+- [x] Provide an engineering README and deliver the tested platform foundation.
+- [x] Verify and apply the requested Hyperfram, UI Pro Max, and task-skill resources where available.
+- [x] Isolate the legacy made-to-order router from the active general-commerce platform surface.
+- [x] Implement catalog administration: create a product/variant, publish or archive a product, and adjust inventory from the admin console.
+- [x] Add automated successful-service tests for cart mutation, promotion application, checkout order creation, cart conversion, admin-visible order records, and inventory decrement.
+- [x] Exercise the reference catalog and product-to-cart-to-order flow in the browser and verify the resulting admin state.
+- [x] Redesign the entire interface as a modern developer-first commerce platform, including storefront, admin workspace, catalog operations, and extension surfaces.
+- [x] Implement and test the core product-to-cart-to-order lifecycle with role-aware administration.
+- [x] Document the platform module boundaries, API contracts, extension model, and next implementation phases.
+- [x] Adapt the supplied MotionSites reference into an original layered, motion-led visual system for the commerce-in-a-box product.
+- [x] Replace the Forge working name and generic SaaS identity with a sellable product name and clear commercial positioning.
+- [x] Build a visual product experience with distinct landing, solutions, storefront, merchant dashboard, themes, and extension surfaces rather than repeated flat layouts.
+- [x] Define and present the launch-ready commerce-in-a-box offer for merchants and agencies, including what ships on day one and the differentiating upgrade path.
+- [x] Validate the redesigned experience across desktop and mobile while retaining the product-to-cart-to-order workflow.
+- [x] Add a dedicated solutions surface that packages merchant and agency use cases in distinct interactive visual sections.
+- [x] Add a dedicated themes surface with an interactive theme showcase that proves the platform beyond landing-page copy.
+- [x] Validate the new solutions and themes surfaces at desktop and mobile sizes.
+- [x] Audit the supplied MotionSites prompt line-by-line and map its exact visual, motion, navigation, and responsive rules to the commerce product.
+- [x] Remove all customer-facing references to Office Hours and the invented Rivet brand; use neutral product language until the user selects a final name.
+- [x] Replace the pixel/tech visual language with the reference typography, video staging, staircase composition, clipped controls, and restrained two-section visual grammar.
+- [x] Recompose the public landing and supporting pages without generic SaaS/developer-console visual clichés while retaining functional storefront and merchant routes.
+- [x] Validate the corrected experience against the supplied reference at desktop and mobile widths before delivery.
+- [x] Replace the public pixel/tech type treatment with a calmer multilingual editorial sans suitable for English, Arabic, and French.
+- [x] Build the English, Arabic RTL, and French translation model with language selection, persisted choice, and direction-aware layout behavior.
+- [x] Rebuild the public landing exactly around the MotionSites two-section staging while adapting the copy to the sellable commerce product.
+- [x] Remove all public Office Hours and invented-brand labels from the landing, navigation, and public documentation until a final product name is selected.
+- [x] Validate all three languages and Arabic RTL at desktop and mobile widths alongside the commerce routes.
+- [x] Remove the remaining dead `/solutions` public CTAs so the two-section landing only links to active commerce routes.
+- [x] Restore legible desktop hero-video staging; the live full-page capture currently shows an empty right-hand stage despite the loaded video.
+- [x] Localize all active storefront, cart, checkout, merchant-console, and developer-documentation interface copy in English, French, and Arabic RTL.
+- [x] Format commerce currency according to the selected locale while retaining USD as the platform’s configured currency.
+- [x] Restore the exact approved desktop MotionSites crop and scrim values while retaining a poster-backed first frame for reliable media staging.
+- [x] Localize the remaining merchant-console module-registry strings in English, French, and Arabic.
+- [x] Verify the final desktop hero screenshot after the exact crop/scrim restoration.
+- [x] Run and record an EN/FR/AR desktop and 375px route matrix covering store, product, cart, checkout, docs, and admin states.
+- [x] Fix the 375px product-detail horizontal overflow observed in English, French, and Arabic during the complete route matrix.
+- [x] Localize the shared ShopShell and DashboardLayout brand lockup text in English, French, and Arabic.
+- [x] Diagnose and fix the public landing’s premature scroll termination so it has a deliberate, complete page journey.
+- [x] Audit current capabilities against EverShop’s real merchant, storefront, extension, and dashboard model rather than copying its public presentation.
+- [x] Rebuild the product into a credible platform for merchants and agencies to launch stores, manage operations, tailor dashboards, and produce storefront mockups.
+- [x] Replace weak visual imitation with a complete product system: real storefront themes, merchant workflows, layout controls, and agency-ready handoff surfaces.
+- [x] Add workspace, store, store-member, theme, page, and page-section persistence with ownership and role boundaries.
+- [x] Scope catalog, cart, promotion, and order operations to a merchant-owned store while retaining the existing commerce invariants.
+- [x] Build a merchant onboarding path that creates the first store and establishes the owner role without a global demo dependency.
+- [x] Build an operational merchant workspace with overview, catalog, orders, marketing, storefront studio, and extensions navigation.
+- [x] Build a storefront studio with theme presets, editable page sections, desktop/mobile preview, and persisted mockup configuration.
+- [x] Expand the public landing into a full product journey that routes into the real merchant studio and demo storefront.
+- [x] Add automated tenant-isolation, merchant-role, storefront-studio persistence, and commerce-regression coverage.
+- [x] Backfill storefront-studio records for the migrated reference store so the active merchant workspace is operational rather than empty.
+- [x] Connect storefront-studio publication to a merchant-specific public store route so persisted sections and themes can be shipped, not only previewed.
+- [x] Fix tenant-store cart restoration after a full route reload; the cart currently loses its active store session when navigating from `/s/:handle` to `/cart`.
+- [x] Add a merchant workspace order ledger backed by the existing store-scoped order records.
+- [x] Build an agency-facing handoff surface with a client-ready storefront review link and explicit implementation state.
+- [x] Add a merchant dashboard view preference that persists per store rather than leaving the workspace as fixed tabs only.
+- [x] Add explicit integration tests for OWNER, MANAGER, and MERCHANDISER permissions across catalog and storefront-studio actions.
+- [x] Match merchant workspace mutation controls to the stored membership role matrix, preserving analyst read-only access.
+- [x] Render the agency review as a read-only composition of the stored storefront theme, visible sections, and published catalog rather than a summary-only page.
+- [x] Create and validate a real client-review link end-to-end in the browser.
+- [x] Adapt the storefront visual language with an original food-packaging mockup treatment informed by the supplied reference.
+- [x] Validate handoff creation from the signed-in merchant workspace UI and open the exact generated review link.
+- [x] Source advanced free-to-use mockups for the demo catalog and document the selected asset licenses.
+- [x] Integrate the selected product mockups into tenant storefront and client-review catalog cards without changing commerce flows.
+- [x] Validate the upgraded catalog presentation at desktop and mobile sizes.
+- [x] Add a coordinated 4-SKU demo catalog with product and variant mockup media.
+- [x] Persist tenant-scoped product and variant media records with role-aware management APIs.
+- [x] Implement merchant image upload, focal-point crop controls, ordering, and image removal in the workspace catalog.
+- [x] Build variant-aware product galleries and desktop catalog hover media without breaking cart or checkout behavior.
+- [x] Add automated media authorization and variant-gallery regression coverage, then validate desktop and mobile media interactions.
+- [x] Add merchant workspace controls to reorder product media and persist gallery/hover `sortOrder` changes.
+- [x] Add automated coverage for variant-specific gallery hydration and product-detail fallback media behavior.
+- [x] Add automatic server-side WebP conversion and retained optimization metadata for merchant-uploaded product images.
+- [x] Add role-aware bulk product-media upload with per-file success and failure feedback.
+- [x] Add merchant controls to edit variant title, color, option values, price, and inventory with tenant authorization.
+- [x] Validate optimized media delivery, bulk upload behavior, variant-option editing, and responsive storefront presentation.
+- [x] Render each bulk upload file’s success or error result in the merchant media desk.
+- [x] Revalidate the authenticated workspace bulk upload and variant editor after the per-file feedback UI is added.
+- [x] Run an authenticated bulk upload after the per-file feedback patch and verify file-by-file result rows plus persisted optimized media records.
+- [x] Run an authenticated variant edit and verify the saved value persists in the workspace and customer product detail.
+- [x] Run an actual authenticated workspace bulk upload and observe the per-file success or error rows in the merchant UI.
+- [x] Run an actual authenticated workspace variant save and verify the changed values on the customer product-detail page.
+- [x] Fix the missing Product media entry point reported from the authenticated merchant workspace.
+- [x] Keep the fixed Product media control clear of the preview-mode footer so it remains visible and keyboard-accessible during merchant work.
+- [x] Expose the bulk-upload file input to assistive and browser automation tooling without changing the merchant-facing visual control.
+- [x] Keep variant fields and their Save action ahead of media-feedback content in the compact merchant media desk.
+- [x] Surface the selected variant’s saved color and option values on the customer product-detail page.
+- [ ] Enable an optional live Chargily hosted-checkout connector only after a merchant supplies its own credentials; keep HMAC webhooks as the payment authority.
+- [ ] Add carrier-account adapters for label purchase and live tracking after a merchant supplies a supported carrier account and API documentation.
+- [x] Add a merchant subscription-invoice review and settlement workflow; do not assume a hosted billing provider.
+- [ ] Browser-inspect the merchant subscription-invoice panel when a signed-in merchant browser session is available; do not submit a transfer reference solely for validation.
+- [x] Add a merchant-facing product bulk CSV import/export workflow with row-level validation and tenant isolation.
+- [ ] Browser-verify the option-combination generator after submit until its inline success or error feedback is visibly rendered beneath the button.
+- [ ] Confirm in the live merchant UI that generated variants refetch into the desk after submit, then remove temporary validation variants and ledger rows.
+- [x] Repeat browser validation across multiple workspace reloads and confirm the catalog never drops to zero products or a blank document.
+- [x] Add and validate visible merchant workspace refresh feedback during retained-data operation-query refetches.
+- [x] Localize retained-data merchant workspace refresh, empty, and error feedback across English, French, and Arabic RTL.
+- [x] Localize merchant commerce configuration controls, SEO fields, native payment setup, delivery rates, and invoice review copy across English, French, and Arabic RTL.
+- [x] Localize visible delivery-zone, delivery-rate, and tax-rule starter values for French and Arabic merchants without overwriting existing saved merchant data.
+- [x] Replace raw merchant subscription-invoice status text with localized labels in every displayed invoice state.
+- [x] Add focused rendered-state coverage for merchant commerce configuration direction and English/French/Arabic visible text.
+- [x] Expand merchant commerce rendered-state tests to open the panel and verify localized inner SEO, invoice, delivery, tax, starter-value, and RTL content.
+- [x] Add focused regression coverage for merchant workspace query-state behavior during overview refetches.
+- [x] Review remaining workspace-mounted panels for query/refetch stability and apply the same retention pattern where relevant.
+- [x] Complete authenticated-customer address selection and safe checkout autofill, including visible saved-address loading and error states, while retaining guest checkout.
+- [ ] Browser-validate authenticated saved-address selection and checkout autofill, while confirming the guest checkout remains unchanged.
+- [x] Add merchant return and manual-refund controls to the operational desk; preserve the explicit "record only, no money movement" boundary.
+- [x] Document that transactional order notifications use Mailjet while customer sign-in uses Auth0; do not invent an application password-recovery flow without an explicit authentication-model change.
+- [ ] If the product adds application-owned recovery beyond Auth0, design it with one-time tokens, expiry, non-enumeration, Mailjet delivery, and independent security review.
+- [x] Add per-store SEO title/description controls and product canonical metadata alongside the existing tenant sitemap and robots output.
+- [ ] Browser-inspect merchant SEO controls and public document metadata when a signed-in merchant browser session is available.
+- [x] Add privacy export/deletion review requests, operational retention rules, and documented recovery procedures; customer requests are manual-review only and never automatically anonymise or delete commercial records.
+- [ ] Configure and validate a merchant-specific legal retention schedule plus independent database backup and restoration procedure before relying on data recovery commitments.
+- [x] Add a tenant-scoped Owner/Manager retention and recovery record for merchant retention windows, policy/runbook references, acknowledgement, and last recovery-test date without automating deletion or restoration.
+- [ ] Browser-confirm the open Monitor panel’s rendered low-stock, payment-review, queued-notice, and recent-inventory text.
+- [ ] Add alert delivery only when the merchant deliberately configures an external provider; do not claim alerts are dispatched from the native queue.
+- [ ] Add browser end-to-end coverage for the current guest checkout, customer account, native payment review, shipment, and settlement workflow.
+- [x] Preserve the provider-neutral Algeria-first capability registry as new payment methods are added; never require Stripe or PayPal.
+- [x] Research and verify Algeria-compatible online payment, cash-on-delivery, and merchant-settlement options; optional Chargily remains merchant-configured and disabled by default.
+- [x] Implement native cash-on-delivery and manual-bank-transfer checkout with merchant review and explicit settlement states.
+- [x] Prioritise native bank transfer after cash on delivery; retain Chargily as a disabled, credential-gated connector.
+- [x] Define and document the provider-neutral Algeria-first commercial architecture, including raw-body signed webhook, idempotency, and merchant-owned-funds boundaries.
+- [x] Add and safely apply tenant-scoped commercial schemas for payment attempts/events, customer profiles and addresses, delivery, fulfilment, returns, refunds, plans, tax rules, audit events, and notifications.
+- [x] Provision commercial settings, a starter entitlement record, and native payment methods during new merchant workspace bootstrap.
+- [x] Implement guest checkout using configured delivery rates with cash-on-delivery and bank-transfer review states, immutable address/tax snapshots, customer profiles, stock reservation, and per-store currency inheritance.
+- [x] Implement merchant commercial controls for business identity, native payment activation, and delivery-rate setup.
+- [x] Implement merchant payment review, manual shipment creation, cash-settlement visibility, return decisions, and manual-review refund records with audit events.
+- [x] Implement customer order-account linking through the verified signed-in email, tenant-scoped order history, and fulfilled-order return requests.
+- [x] Add raw webhook verification primitives and a fail-closed Chargily endpoint without activating third-party credentials.
+- [x] Add tenant sitemap and robots output plus runtime and database health endpoints.
+- [x] Add database-backed native checkout and merchant-operation regression coverage, including native payment states, inventory reservation, order approval, and shipment transitions.
+- [x] Keep outbound email delivery disabled until the merchant deliberately configures a provider and verified sender domain; do not represent queued notifications as sent.
+- [x] Add secure linked-customer saved-address retrieval, create/update, default selection, and deletion controls with customer ownership checks.
+- [x] Add merchant barcode editing and immutable stock movements for manual adjustments, checkout reservations, and cancelled-order releases.
+- [x] Queue customer and merchant order-notification records transactionally without activating outbound email delivery.
+- [x] Add bounded API and webhook request-rate limiting with safe webhook error responses.
+- [x] Add the native subscription-invoice ledger needed for a future Algeria-first bank-transfer merchant-billing workflow.
+- [x] Add per-variant low-stock thresholds to merchant controls and persist them alongside inventory movements.
+- [x] Refine the mobile merchant workspace navigation so its first label is fully visible and all destinations remain reachable.
+- [x] Improve public storefront product discovery and conversion cues without introducing provider-dependent checkout behavior.
+- [x] Improve merchant catalog workflow clarity and product-management feedback without changing tenant or role boundaries.
+- [x] Build a stronger visual storefront collection experience with richer product cards and clear commerce cues.
+- [x] Expand merchant catalog tools with faster inventory and product-status visibility while preserving tenant and role guards.
+- [x] Refine storefront visual hierarchy and collection storytelling without changing the public commerce data model.
+- [x] Refine product-card conversion feedback and native cart handoff without introducing checkout-provider dependencies.
+- [x] Refine merchant catalog operational visibility and quick actions while preserving tenant and role guards.
+- [x] Refine native checkout payment-method and next-step guidance without representing external payment or delivery capabilities as active.
+- [x] Evaluate free-tier providers from the supplied directory for outbound email, Algeria-compatible merchant payments, and carrier operations against the platform’s security and merchant-owned-funds boundaries.
+- [x] Integrate only a selected compatible free-tier service after verifying its requirements, account prerequisites, and credential model.
+- [x] Configure Mailjet credentials and a verified sender, then deliver transactional order notifications with auditable provider outcomes.
+- [x] Verify the configured Mailjet sender before turning on transactional email delivery.
+- [x] Re-check the user-confirmed Mailjet sender verification in the provider API before dispatching queued notifications.
+- [x] Resolve the discrepancy between the Mailjet dashboard’s active status and the sender-list API before any send attempt.
+- [x] Replace the Mailjet credentials with the sender-account pair supplied by the user and revalidate the active sender.
+- [x] Evaluate and document carrier-operation entries from the supplied free-tier directory; no carrier provider is activated without merchant credentials, Algeria-coverage evidence, and provider documentation.
+- [x] Update merchant operations copy to distinguish Mailjet queued, provider-accepted, and failed notification states without claiming recipient delivery.
+- [x] Localize merchant operations-monitor state, inventory, and Mailjet boundary copy across English, French, and Arabic RTL.
+- [x] Prepare secure Mailjet delivery-event webhook ingestion with a separate callback token; it remains disabled until a published HTTPS callback is deliberately configured.
+- [ ] After publication, configure a separate Mailjet callback token and event URL, then validate live destination-server acceptance, bounce, blocked, and spam handling without claiming inbox-read status.
+- [x] Defer the proposed Medusa customer-authentication backend after the user selected Auth0 for customer sign-in; no Medusa service, database, or merchant-data migration was created.
+- [x] Assess the user-supplied Auth0 application and free-tier terms; it is suitable for customer authentication only if local tenant roles remain authoritative and exact production redirects are configured.
+- [x] Receive explicit approval before replacing customer sign-in with Auth0; securely configure its client secret and exact published callback/logout URLs.
+- [x] Configure the approved Auth0 application for the exact published commerce-platform callback, logout, and web-origin URLs without wildcard redirects.
+- [x] Implement Auth0 customer identity verification and local account linking while leaving merchant tenant authorization in the platform database.
+- [ ] Validate end-to-end Auth0 customer sign-in, local account linking, logout, and merchant-role separation through a voluntary customer login; no test account will be created.
+- [x] Add and validate a clearly visible public Auth0 customer sign-in entry in the shared storefront navigation and account surface.
+- [x] Export the current published platform to the private GitHub repository `NourTi/commerce-platform`.
+- [x] Add a GitHub Actions CI workflow that validates type checks, portable regression coverage, and production builds on pushes and pull requests.
+- [x] Assess the supplied browser-automation catalog and retain the existing browser tooling rather than add a redundant MCP that does not resolve signed-in session prerequisites.
+- [x] Assess the user-supplied MailFlat email MCP; retain Mailjet for live notifications and reserve MailFlat only for isolated development OTP/email testing if separately enabled.
+- [ ] Validate the published Mailjet callback only after setting a separate callback credential and registering the public HTTPS endpoint in Mailjet.
+- [x] Diagnose and correct the public customer sign-in route if it reaches Manus authentication instead of the Auth0 Universal Login.
+- [x] Map and correct the exact public authentication action still reaching Manus instead of the intended Auth0 customer login.
+- [x] Replace every public customer-facing Manus authentication screen and trigger with Auth0; retain no customer route that can open a Manus login dialog.

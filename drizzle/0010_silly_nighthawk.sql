@@ -1,0 +1,1 @@
+ALTER TABLE `commerceVariants` ADD `lowStockThreshold` int DEFAULT 0 NOT NULL;
