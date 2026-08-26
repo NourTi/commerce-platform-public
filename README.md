@@ -4,6 +4,12 @@ This repository contains a **merchant- and agency-oriented ecommerce platform** 
 
 > The product name is intentionally neutral until a final name is selected. The former “Office Hours”, Forge, and Rivet labels are not customer-facing product identity.
 
+## Platform mockup
+
+![Commerce platform landing and product presentation](./docs/images/platform-overview.png)
+
+*A real desktop capture of the platform’s public landing experience, including its product positioning, navigation, storefront entry, and customer sign-in action.*
+
 ## What is implemented
 
 | Area | Current capability |
